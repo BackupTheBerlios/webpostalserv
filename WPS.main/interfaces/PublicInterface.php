@@ -23,9 +23,10 @@ return 'password';
  * $destinationURL: the URL of the destination web server 
  */
 
-function createMessageHeader($messageName,$authorName,$password,$envelopeFormat){
+function createMessageHeader($version,$messageName,$authorName,$password,$envelopeFormat){
 
 $messageHeader=array();
+$messageHeader['version']=$version;
 $messageHeader['messageName']=$messageName;
 $messageHeader['authorName']=$authorName;
 $messageHeader['password']=$password;

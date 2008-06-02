@@ -1,16 +1,17 @@
 <?php
+$version='1';
 $messageName='purchaseGift';
 $authorName='Buddy';
 $password='password';
 $envelopeFormat='SOAP1.1';
-$messageHeader=createMessageHeader($messageName,$authorName,$password,$envelopeFormat);
+$messageHeader=createMessageHeader($version,$messageName,$authorName,$password,$envelopeFormat);
 
 $body='<gift><value>30EUR</value></gift>';
 $bodyFormat='XML';
 $bodyArray=null;
 $messageBody=createMessageBody($body,$bodyFormat,$bodyArray);
 
-$message='<ns:webmessage "xmlns:ns="http://www.pantouflette.fr/lampadaire">'.
+$message='<ns:webmessage "xmlns:ns="http://localhost/WPS">'.
 '<header>'.
 '<messageName>'.$messageName.'</messageName>'.
 '<callingPartyID>'.$authorName.'</callingPartyID>'.

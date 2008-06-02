@@ -29,7 +29,7 @@ define(MAIL_SIGNATURE_IMPLEMENTATION,'implementation/WebExchangesProtocol/Simple
  * change this constant to the XML namespace defining your Exchange protocol 
  * 
  * */
-define(XML_NAMESPACE_URL,'http://www.pantouflette.fr/lampadaire/webexchanges');
+define(XML_NAMESPACE_URL,'http://192.168.1.1:80/WPS.main/public/IncomingMailBox.php');
 
 /*
  * Definition of the Message Signature Check Failure excetion
