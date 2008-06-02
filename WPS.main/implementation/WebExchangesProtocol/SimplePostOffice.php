@@ -8,7 +8,12 @@ require_once '../interfaces/PostOffice.php';
  function simpleCreateMessage($messageHeader,$messageBody){
 	
  	$message ='<ns:webmessage "xmlns:ns="'.XML_NAMESPACE_URL.'">';
- 	$message .='<header>';
+ 	if($messageHeader['version']!=null){
+ 		$message .='<header version="'.$messageHeader['version'].'">';
+ 	}
+ 	else {
+ 		$message .='<header>';
+ 	}
  	$message .='<messageName>';
  	$message .=$messageHeader['messageName'];
  	$message .='</messageName>';
