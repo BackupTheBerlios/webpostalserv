@@ -95,7 +95,7 @@ return postMessageAndGetReceipt($messageHeader, $messageBody);
  * 
  **/
 function receiveMessageAndGiveReceipt($messageHeader, $messageBody){
-// TODO implement here a link with your system to handle the received message and create the exchange receipt;
+// TODO implement here a link with the other components of your system to handle the received message and create the exchange receipt;
 //  this is an example return
 return createExchangeReceipt(null, 'EXCHANGE_OK', null, null);
 }

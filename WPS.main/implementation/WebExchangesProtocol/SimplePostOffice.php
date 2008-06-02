@@ -17,12 +17,12 @@ require_once '../interfaces/PostOffice.php';
  	$message .='<messageName>';
  	$message .=$messageHeader['messageName'];
  	$message .='</messageName>';
- 	$message .='<callingPartyID>';
+ 	$message .='<authorName>';
  	$message .=$messageHeader['authorName'];
- 	$message .='</callingPartyID>';
- 	$message .='<callingPartyKey>';
+ 	$message .='</authorName>';
+ 	$message .='<messageSignature>';
  	if(WITH_SIGNATURE)$message .=signMessage($messageHeader['password'],$messageBody['body']);
- 	$message .='</callingPartyKey>';
+ 	$message .='</messageSignature>';
  	$message .='</header>';
  	$message .='<body>';
  	$message .=$messageBody['body'];
@@ -78,8 +78,10 @@ require_once '../interfaces/PostOffice.php';
  $message=getMessageFromEnvelope($envelope);
  
  $messageName=getMessageNameFromMessage($message);
+ $authorName=getAuthorNameFromMessage($message);
  $messageHeader=array();
  $messageHeader['messageName']=$messageName;
+ $messageHeader['authorName']=$authorName;
  
  $messageBody=getMessageBodyFromMessage($message);
  
@@ -137,11 +139,21 @@ return $messageBody;
 
 function simpleGetSignatureFromMessage($message) {
 
-$signature=strstr($message,'<callingPartyKey>');
-$signature=substr($signature,strlen('<callingPartyKey>'));
-$signature=substr($signature,0,strlen($signature)-strlen(strstr($signature,'</callingPartyKey>')));
+$signature=strstr($message,'<messageSignature>');
+$signature=substr($signature,strlen('<messageSignature>'));
+$signature=substr($signature,0,strlen($signature)-strlen(strstr($signature,'</messageSignature>')));
 
 return $signature;
+ 
+}
+
+function simpleGetAuthorNameFromMessage($message) {
+
+$authorName=strstr($message,'<authorName>');
+$authorName=substr($authorName,strlen('<authorName>'));
+$authorName=substr($authorName,0,strlen($authorName)-strlen(strstr($authorName,'</authorName>')));
+
+return $authorName;
  
 }
 

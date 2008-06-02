@@ -78,6 +78,17 @@ function receiveEnvelopeAndGiveReceipt($envelope,$password){
  * $messageBody : array defined in the 'PublicInterface.php' file
  * returns: an exchangeReceipt array defined in the 'PublicInterface.php' file
  */
+
+ function getAuthorNameFromMessage($message){
+ 	return simpleGetAuthorNameFromMessage($message);
+}
+
+/*
+ * Arguments:
+ * $messageHeader : array defined in the 'PublicInterface.php' file
+ * $messageBody : array defined in the 'PublicInterface.php' file
+ * returns: an exchangeReceipt array defined in the 'PublicInterface.php' file
+ */
  function getSignatureFromMessage($message){
  	return simpleGetSignatureFromMessage($message);
 }
